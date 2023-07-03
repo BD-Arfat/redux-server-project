@@ -80,6 +80,12 @@ async function run() {
             const users = await cursor.toArray();
             res.send(users)
         })
+        app.get('/tags/:id', async(req, res)=>{
+            const id = req.params.id;
+            const query = {_id : new ObjectId(id)};
+            const user = await tagsCollection.findOne(query);
+            res.send(user)
+        })
 
     } finally {
 
